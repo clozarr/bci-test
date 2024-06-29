@@ -18,6 +18,6 @@ public class CreateUserRequest {
     private String name;
     private String email;
     private String password;
-    List<PhonesRequest> phones;
+    List<PhoneRequest> phones;
 
 }

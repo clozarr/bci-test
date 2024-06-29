@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PhonesRequest {
+public class PhoneRequest {
 
     private String number;
     private String cityCode;

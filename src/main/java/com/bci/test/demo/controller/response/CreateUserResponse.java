@@ -1,6 +1,6 @@
 package com.bci.test.demo.controller.response;
 
-import com.bci.test.demo.controller.request.PhonesRequest;
+import com.bci.test.demo.controller.request.PhoneRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,8 +20,7 @@ public class CreateUserResponse {
     private String name;
     private String email;
     private String password;
-    List<PhonesRequest> phones;
-
+    List<PhoneRequest> phones;
     private LocalDateTime created;
     private LocalDateTime modified;
     private LocalDateTime lastLogin;

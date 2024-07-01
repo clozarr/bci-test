@@ -21,6 +21,11 @@ Esta API proporciona servicios para gestionar usuarios.
 ### Swagger
 Para acceder al swagger del microservicio, ejecute la aplicación e ingrese al siguiente enlace: http://localhost:8080/api/swagger-ui/index.html
 
+### Colección de Postman
+la colección de postman que se usó para probar la API se encuentra en: `src/main/resources/postman/BCI technical test.postman_collection.json` 
+
+### Diagrama de la solución
+![Diagrama de la solución](src/main/resources/images/solution-diagram.png)
 
 ## Como ejecutar la API
 

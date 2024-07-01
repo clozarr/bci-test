@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import java.net.URI;
+import java.util.List;
 
 @Data
 @Builder
@@ -19,7 +20,7 @@ public class ErrorResponse {
     private String reason;
 
     @Schema(description = "error message")
-    private String message;
+    private List<String> messages;
 
     @Schema(description = "Timestamp of the error", example = "2024-04-10 12:00:00")
     private String date;

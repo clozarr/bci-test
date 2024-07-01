@@ -54,7 +54,7 @@ public class UserController {
     public ResponseEntity<UserResponse> createUser(
 
             @Parameter(name = "request", required = true, description = "User object to save")
-            @Valid  @RequestBody UserRequest request){
+              @RequestBody UserRequest request){
 
         log.info("Create user: {}", request);
         UserResponse response = userService.saveUser(request);

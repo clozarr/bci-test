@@ -14,10 +14,10 @@ import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Validator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import jakarta.validation.Validator;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -30,20 +30,21 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final Validator validator;
+
 
 
     @Override
     @Transactional
-    public UserResponse saveUser(UserRequest request) throws DataIntegrityViolationException {
+    public UserResponse saveUser(UserRequest request) throws DataIntegrityViolationException, ConstraintViolationException {
 
         Set<ConstraintViolation<UserRequest>> violations = validator.validate(request);
 
-       /* if (!violations.isEmpty()) {
+        if (!violations.isEmpty()) {
             throw new ConstraintViolationException(violations);
-        }*/
+        }
 
         UserEntity userEntity = userMapper.toEntity(request);
         UserEntity createdEntity =  userRepository.save(userEntity);

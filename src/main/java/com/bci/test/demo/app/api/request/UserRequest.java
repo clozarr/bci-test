@@ -29,7 +29,7 @@ public class UserRequest {
     @NotBlank(message = "Email can't be empty")
     private String email;
 
-    @Size(min = 8, message = "El password debe tener al menos 8 caracteres")
+    @Size(min = 8, message = "password must contain at least 8 characters")
     @Pattern.List({
             @Pattern(regexp = "(?=.*[0-9]).+", message = "password must contain at least one number"),
             @Pattern(regexp = "(?=.*[a-z]).+", message = "Password must contain at least one lowercase letter"),

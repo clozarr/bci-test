@@ -10,11 +10,12 @@ Esta API proporciona servicios para gestionar usuarios.
 ### Endpoints
 
 
-| Operation         | Método | Path            |
-|-------------------|--------|-----------------|
-| Crear usuario     | POST   | /api/v1/users   |
-| Obtener usuario   | GET    | /api/v1/users/{id} |
-| Actualizar usuario| PATCH  | /api/v1/users/{id} |
+| Operation                  | Método | Path          |
+|----------------------------|--------|---------------|
+| Crear usuario              | POST   | /api/v1/users |
+| Obtener usuario            | GET    | /api/v1/users/{id} |
+| Actualizar usuario         | PATCH  | /api/v1/users/{id} |
+| Obtener todos los usuarios | GET    | /api/v1/users |
 
 
 ### Swagger
@@ -289,7 +290,7 @@ mvn spring-boot:run -DSPRING_PROFILES_ACTIVE=h2
 ```
 
 ### 7. Validación Actualizar usuario, Usuario No Existe
-- **Descripción**: Actualizar usuario.
+- **Descripción**: Validación error en actualizar usuario, usuario no existe.
 - **Endpoint**: `PATCH localhost:8080/api/v1/users/{invalidId}`
 - **Body Request de Ejemplo**:
 
@@ -318,5 +319,88 @@ mvn spring-boot:run -DSPRING_PROFILES_ACTIVE=h2
   "date": "2024-07-01 11:24:45",
   "path": "/api/v1/users/{invalidId}"
 }
+
+```
+
+### 8. Obtener todos los usuarios
+- **Descripción**: obtener todos los usuarios.
+- **Endpoint**: `GET localhost:8080/api/v1/users`
+
+- **Body Response de Ejemplo**:
+```json
+[
+  {
+    "uuid": "0858ef3c-ac80-49cd-8f89-aa3dd673d4ec",
+    "name": "Juan Rodriguez 2",
+    "email": "juan2@rodriguez.org",
+    "password": "hunter2",
+    "phones": [
+      {
+        "number": "1234567",
+        "cityCode": "1",
+        "countryCode": "57"
+      }
+    ],
+    "created": "2024-06-30T21:16:24",
+    "modified": "2024-07-01T02:16:08",
+    "lastLogin": "2024-07-01T02:16:08",
+    "token": "service-dummy-token",
+    "isActive": true
+  },
+  {
+    "uuid": "1e8fa628-d47d-487c-9efe-f9694df517d1",
+    "name": "Juan Rodriguez",
+    "email": "juan@rodriguez.org",
+    "password": "Hunter34*",
+    "phones": [
+      {
+        "number": "74528",
+        "cityCode": "2",
+        "countryCode": "58"
+      }
+    ],
+    "created": "2024-07-01T11:13:16",
+    "modified": "2024-07-01T11:23:13",
+    "lastLogin": "2024-07-01T11:23:13",
+    "token": "service-dummy-token",
+    "isActive": true
+  },
+  {
+    "uuid": "9f46b954-6aa5-4b87-ace8-f8008e3fd748",
+    "name": "Carlos Lozano",
+    "email": "carlos@lozano.org",
+    "password": "hunter3",
+    "phones": [
+      {
+        "number": "345677",
+        "cityCode": "4",
+        "countryCode": "57"
+      }
+    ],
+    "created": "2024-07-01T03:25:40",
+    "modified": "2024-07-01T03:25:40",
+    "lastLogin": "2024-07-01T03:25:40",
+    "token": "service-dummy-token",
+    "isActive": true
+  },
+  {
+    "uuid": "d837f0e4-b4cb-4e7e-9e5a-238c9a4d8eec",
+    "name": "Erika Martinez",
+    "email": "erika@martinez.org",
+    "password": "hunter4",
+    "phones": [
+      {
+        "number": "74528",
+        "cityCode": "2",
+        "countryCode": "58"
+      }
+    ],
+    "created": "2024-07-01T03:26:58",
+    "modified": "2024-07-01T03:26:58",
+    "lastLogin": "2024-07-01T03:26:58",
+    "token": "service-dummy-token",
+    "isActive": true
+  }
+]
 
 ```

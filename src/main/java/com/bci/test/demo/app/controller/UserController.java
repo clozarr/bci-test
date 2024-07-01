@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -108,6 +109,21 @@ public class UserController {
     }
 
 
+    @Operation(summary = "Get all users", description = "Gets the information of all users")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "400", description = "Bad request or validation error",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
+            @ApiResponse(responseCode = "500", description = "Internal server error",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
+    })
+    @GetMapping()
+    public ResponseEntity<List<UserResponse>> getAllUsers() throws UserException {
+
+        List<UserResponse> userResponseList = userService.getAllUsers();
+        return new ResponseEntity<List<UserResponse>>(userResponseList, HttpStatus.OK);
+
+    }
 
 
 

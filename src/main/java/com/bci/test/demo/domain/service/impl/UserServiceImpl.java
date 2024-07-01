@@ -20,9 +20,13 @@ import org.springframework.stereotype.Service;
 import jakarta.validation.Validator;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 
 @Service
@@ -93,5 +97,17 @@ public class UserServiceImpl implements UserService {
         userEntity.setEmail(request.getEmail());
 
         return  userMapper.toResponse(userRepository.save(userEntity));
+    }
+
+    @Override
+    public List<UserResponse> getAllUsers() {
+
+        Iterable<UserEntity> userEntityIterable =  userRepository.findAll();
+
+        return StreamSupport.stream(userEntityIterable.spliterator(),false)
+                .map(userMapper::toResponse)
+                .collect(Collectors.toList());
+
+
     }
 }

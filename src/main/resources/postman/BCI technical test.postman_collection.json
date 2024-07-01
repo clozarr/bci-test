@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "bcec3c1a-351f-4960-b00d-3692ba65e0d8",
+		"name": "BCI technical test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9506999"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Dummy Martinez\",\n    \"email\": \"dummy@martinez.org\",\n    \"password\": \"Hunter34*\",\n    \"phones\": [\n                {\n                \"number\": \"74528\",\n                \"cityCode\": \"2\",\n                \"countryCode\": \"58\"\n                }\n        ]   \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User Copy",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Juan Rodriguez\",\n    \"email\": \"juan@rodriguez.org\",\n    \"password\": \"Hunter34*\",\n    \"phones\": [\n                {\n                \"number\": \"1234567\",\n                \"cityCode\": \"1\",\n                \"countryCode\": \"57\"\n                }\n        ]   \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/users/1e8fa628-d47d-487c-9efe-f9694df517d2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"1e8fa628-d47d-487c-9efe-f9694df517d2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User By ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/users/1e8fa628-d47d-487c-9efe-f9694df517d1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"1e8fa628-d47d-487c-9efe-f9694df517d1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

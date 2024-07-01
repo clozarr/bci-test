@@ -1,4 +1,6 @@
 # API de prueba técnica  BCI
+- Autor: Carlos Lozano
+- Compañia: Globallogic
 
 ## Descripción de la API
 
@@ -24,9 +26,9 @@ Para acceder al swagger del microservicio, ejecute la aplicación e ingrese al s
 ### 1. Crear la base de datos
 
 El microservicio está configurado para trabajar con dos bases de datos: H2 y MySQL.
-Para trabajar con la base H2 se debe ejecutar la aplicación usando el profile 'h2',
-para trabajar con la base MySQL se debe ejecutar la aplicación usando el profile 'mysql',
-en la sección 4 se detalla como ejecutar cada perfil.
+Para trabajar con la base H2 se debe ejecutar la aplicación usando el profile 'h2'.
+Para trabajar con la base MySQL se debe ejecutar la aplicación usando el profile 'mysql'.
+En la sección 4 se detalla como ejecutar cada perfil.
 
 Para conectarse a la consola de H2 ejecute la aplicación con el profile activo 'H2' e ingrese a la siguiente URL: http://localhost:8080/api/h2-ui y utilice los siguientes parámetros:
 
@@ -201,6 +203,120 @@ mvn spring-boot:run -DSPRING_PROFILES_ACTIVE=h2
 
  }
   ```
+### 4.  Obtener usuario por ID
+- **Descripción**: Obtener usuario por ID.
+- **Endpoint**: `GET localhost:8080/api/v1/users/{id}`
 
+- **Body Response de Ejemplo**:
+```json
+  
+  {
+    "uuid": "1e8fa628-d47d-487c-9efe-f9694df517d1",
+    "name": "Dummy Martinez",
+    "email": "dummy@martinez.org",
+    "password": "Hunter34*",
+    "phones": [
+        {
+            "number": "74528",
+            "cityCode": "2",
+            "countryCode": "58"
+        }
+    ],
+    "created": "2024-07-01T11:13:16",
+    "modified": "2024-07-01T11:13:16",
+    "lastLogin": "2024-07-01T11:13:16",
+    "token": "service-dummy-token",
+    "isActive": true
+}
+```
+### 5. Error Obtener usuario por ID, usuario no existe
+- **Descripción**: Validación usuario no esxiste en  obtener usuario por ID.
+- **Endpoint**: `GET localhost:8080/api/v1/users/{invalidId}`
 
- 
+- **Body Response de Ejemplo**:
+```json
+
+{
+  "code": 404,
+  "reason": "Not Found",
+  "messages": [
+    "User not found"
+  ],
+  "date": "2024-07-01 11:17:44",
+  "path": "/api/v1/users/1e8fa628-d47d-487c-9efe-f9694df517d2"
+}
+```
+### 6. Actualizar usuario
+- **Descripción**: Actualizar usuario.
+- **Endpoint**: `PATCH localhost:8080/api/v1/users/{userId}`
+- **Body Request de Ejemplo**:
+
+```json
+{
+  "name": "Juan Rodriguez",
+  "email": "juan@rodriguez.org",
+  "password": "Hunter34*",
+  "phones": [
+    {
+      "number": "1234567",
+      "cityCode": "1",
+      "countryCode": "57"
+    }
+  ]
+}
+```
+- **Body Response de Ejemplo**:
+```json
+
+{
+  "uuid": "1e8fa628-d47d-487c-9efe-f9694df517d1",
+  "name": "Juan Rodriguez",
+  "email": "juan@rodriguez.org",
+  "password": "Hunter34*",
+  "phones": [
+    {
+      "number": "74528",
+      "cityCode": "2",
+      "countryCode": "58"
+    }
+  ],
+  "created": "2024-07-01T11:13:16",
+  "modified": "2024-07-01T11:23:13.083572",
+  "lastLogin": "2024-07-01T11:23:13.083592",
+  "token": "service-dummy-token",
+  "isActive": true
+}
+```
+
+### 7. Validación Actualizar usuario, Usuario No Existe
+- **Descripción**: Actualizar usuario.
+- **Endpoint**: `PATCH localhost:8080/api/v1/users/{invalidId}`
+- **Body Request de Ejemplo**:
+
+```json
+{
+  "name": "Juan Rodriguez",
+  "email": "juan@rodriguez.org",
+  "password": "Hunter34*",
+  "phones": [
+    {
+      "number": "1234567",
+      "cityCode": "1",
+      "countryCode": "57"
+    }
+  ]
+}
+```
+- **Body Response de Ejemplo**:
+```json
+{
+  "code": 404,
+  "reason": "Not Found",
+  "messages": [
+    "User not found"
+  ],
+  "date": "2024-07-01 11:24:45",
+  "path": "/api/v1/users/{invalidId}"
+}
+
+```

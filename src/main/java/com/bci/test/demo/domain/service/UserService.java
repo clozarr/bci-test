@@ -4,7 +4,7 @@ import com.bci.test.demo.app.api.request.UserRequest;
 import com.bci.test.demo.app.api.response.UserResponse;
 import com.bci.test.demo.domain.exception.UserException;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.DuplicateKeyException;
+
 
 import java.util.UUID;
 

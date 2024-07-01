@@ -1,4 +1,4 @@
-package com.bci.test.demo.controller.request;
+package com.bci.test.demo.app.api.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

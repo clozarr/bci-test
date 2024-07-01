@@ -1,6 +1,6 @@
-package com.bci.test.demo.controller.response;
+package com.bci.test.demo.app.api.response;
 
-import com.bci.test.demo.controller.request.PhoneRequest;
+import com.bci.test.demo.app.api.request.PhoneRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +14,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateUserResponse {
+public class UserResponse {
 
     private UUID uuid;
     private String name;
